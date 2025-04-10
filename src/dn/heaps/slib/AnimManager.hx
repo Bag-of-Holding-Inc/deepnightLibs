@@ -61,6 +61,7 @@ private class StateAnim {
 	public var priority : Float;
 	public var cond : Void->Bool;
 	public var spd : Float;
+	public var loop : Bool;
 
 	public function new(g:String, ?cb) {
 		group = g;
@@ -550,8 +551,11 @@ class AnimManager {
 			if( sa.cond() ) {
 				if( hasAnim() && getCurrentAnim().group==sa.group )
 					break;
-
-				playAndLoop(sa.group).setSpeed(sa.spd);
+				if(sa.loop) {
+					playAndLoop(sa.group).setSpeed(sa.spd);
+				} else {
+					play(sa.group).setSpeed(sa.spd);
+				}
 				if( hasAnim() )
 					getLastAnim().isStateAnim = true;
 				break;
