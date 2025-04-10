@@ -502,7 +502,7 @@ class AnimManager {
 		registerStateAnim(group, minPrio-1, spd, condition);
 	}
 
-	public function registerStateAnim(group:String, priority:Float, spd=1.0, ?condition:Void->Bool) {
+	public function registerStateAnim(group:String, priority:Float, spd=1.0, loop=true, ?condition:Void->Bool) {
 		if( condition==null )
 			condition = function() return true;
 
@@ -510,6 +510,7 @@ class AnimManager {
 		var s = new StateAnim(group, condition);
 		s.priority = priority;
 		s.spd = spd;
+		s.loop = loop;
 		stateAnims.push(s);
 		stateAnims.sort( function(a,b) return -Reflect.compare(a.priority, b.priority) );
 
