@@ -226,7 +226,7 @@ class HSpriteBE extends BatchElement implements SpriteInterface {
 
 	override function update(et:Float) {
 		if( animAllocated )
-			anim.update( lib!=null ? lib.tmod : 1 );
+			anim.update( Game.ME.tmod );
 
 		return super.update(et);
 	}

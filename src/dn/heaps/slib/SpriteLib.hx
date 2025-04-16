@@ -69,8 +69,6 @@ class SpriteLib {
 	public var defaultCenterX(default, null)	: Float;
 	public var defaultCenterY(default, null)	: Float;
 
-	public var tmod = 1.0;
-
 	// Slicer variables
 	var currentGroup			: Null<LibGroup>;
 	var gridX					: Int;

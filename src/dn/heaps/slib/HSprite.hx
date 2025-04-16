@@ -302,6 +302,6 @@ class HSprite extends h2d.Drawable implements SpriteInterface {
 	override function sync(ctx:h2d.RenderContext) {
 		super.sync(ctx);
 		if( animAllocated )
-			anim.update( lib!=null ? lib.tmod : 1 );
+			anim.update( Game.ME.tmod );
 	}
 }
