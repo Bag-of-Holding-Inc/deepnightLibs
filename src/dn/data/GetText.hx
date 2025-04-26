@@ -350,7 +350,7 @@ class GetText {
 		PARSERS AND GENERATORS
 	 *******************************************************************************/
 
-	#if( sys && !macro )
+	#if( nodejs && !macro )
 	static var SRC_REG = ~/\._\(\s*"((\\"|[^"])+)"/i;
 
 
