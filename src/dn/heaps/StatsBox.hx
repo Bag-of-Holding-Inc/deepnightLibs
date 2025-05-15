@@ -13,7 +13,7 @@ class StatsBox extends dn.Process {
 	inline function set_anchorRatioX(v) return anchorRatioX = M.fclamp(v,0,1);
 
 	/** Screen Y location of Stats (0=top -> 1=bottom) **/
-	public var anchorRatioY(default,set) : Float = 1;
+	public var anchorRatioY(default,set) : Float = 0.9;
 		inline function set_anchorRatioY(v) return anchorRatioY = M.fclamp(v,0,1);
 
 	public var wid(default,set) : Int;
