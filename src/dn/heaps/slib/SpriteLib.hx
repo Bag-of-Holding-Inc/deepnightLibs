@@ -75,8 +75,9 @@ class SpriteLib {
 	var gridY					: Int;
 	var children				: Array<SpriteInterface>;
 
-	public var tile  (get,never)     : h2d.Tile;
-	public var pages (default,null) : Array<h2d.Tile>;
+	public var tile(get,never) : h2d.Tile;
+	public var texture(get,never) : h3d.mat.Texture;
+	public var pages(default,null) : Array<h2d.Tile>;
 	public var normalPages (default, null) : Array<h2d.Tile>;
 
 	public function new(pages : Array<h2d.Tile>, ?normalPages : Array<h2d.Tile>) {
@@ -94,6 +95,10 @@ class SpriteLib {
 	inline function get_tile() {
 		if (pages.length > 1) throw "Cannot access tile when there is multiple pages";
 		return pages[0];
+	}
+
+	inline function get_texture() {
+		return tile.getTexture();
 	}
 
 	public function reloadUsing(l:SpriteLib) {
@@ -480,17 +485,19 @@ class SpriteLib {
 	}
 
 	#if castle
-	public function getCdbTile(tileInf:cdb.Types.TilePos) {
+	public function getCdbTile(tileInf:cdb.Types.TilePos, xr=0., yr=0.) {
 		if( tileInf==null )
 			return h2d.Tile.fromColor(0xff0000, 4,4, 0);
 
 		final size = tileInf.size;
-		return tile.sub(
+		var t = tile.sub(
 			tileInf.x*size,
 			tileInf.y*size,
 			(tileInf.width==null ? 1 : tileInf.width)*size,
 			(tileInf.height==null ? 1 : tileInf.height)*size
 		);
+		t.setCenterRatio(xr,yr);
+		return t;
 	}
 
 	public inline function getCdbBitmap(tileInf:cdb.Types.TilePos, ?p:h2d.Object) {
