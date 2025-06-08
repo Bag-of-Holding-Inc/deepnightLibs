@@ -42,4 +42,6 @@ interface SpriteInterface {
 	public function totalFrames() : Int;
 
 	public function disposeAnimManager() : Void;
+
+	public function setVisible(v:Bool) : Void;
 }

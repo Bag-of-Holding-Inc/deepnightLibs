@@ -304,4 +304,8 @@ class HSprite extends h2d.Drawable implements SpriteInterface {
 		if( animAllocated )
 			anim.update( Game.ME.tmod );
 	}
+
+	override public function setVisible(v:Bool) {
+		visible = v;
+	}
 }

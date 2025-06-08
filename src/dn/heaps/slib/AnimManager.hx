@@ -420,7 +420,13 @@ class AnimManager {
 		var t = getTransition( spr.groupName, getCurrentAnim().group );
 
 		if( t!=null && t.anim!=spr.groupName ) {
-			if( spr.lib.exists(t.anim) ) {
+			if(t.anim == "_hide") {
+				spr.setVisible(false);
+			}
+			else if( t.anim == "_show") {
+				spr.setVisible(true);
+			}
+			else if( spr.lib.exists(t.anim) ) {
 				var a = new AnimInstance(spr, t.anim);
 				stack.insert(0,a);
 				a.speed = t.spd;
