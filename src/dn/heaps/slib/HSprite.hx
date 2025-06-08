@@ -21,6 +21,7 @@ class HSprite extends h2d.Drawable implements SpriteInterface {
 	public var pivot : SpritePivot;
 	public var destroyed : Bool;
 	public var animAllocated(get,never) : Bool;
+	public var animVisibleFlag:Bool = true;
 
 	public var onAnimManAlloc : Null<AnimManager->Void>;
 	public var onFrameChange : Null<Void->Void>;
@@ -305,7 +306,7 @@ class HSprite extends h2d.Drawable implements SpriteInterface {
 			anim.update( Game.ME.tmod );
 	}
 
-	override public function setVisible(v:Bool) {
-		visible = v;
+	public function changeVisible(v:Bool) {
+		animVisibleFlag = v;
 	}
 }

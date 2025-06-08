@@ -43,5 +43,5 @@ interface SpriteInterface {
 
 	public function disposeAnimManager() : Void;
 
-	public function setVisible(v:Bool) : Void;
+	public function changeVisible(v:Bool) : Void;
 }

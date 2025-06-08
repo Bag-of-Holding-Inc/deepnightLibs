@@ -18,6 +18,7 @@ class HSpriteBE extends BatchElement implements SpriteInterface {
 	public var pivot : SpritePivot;
 	public var destroyed : Bool;
 	public var animAllocated(get,never) : Bool;
+	public var animVisibleFlag:Bool = true;
 
 	public var onAnimManAlloc : Null<AnimManager->Void>;
 	public var onFrameChange: Null<Void->Void>;
@@ -229,5 +230,9 @@ class HSpriteBE extends BatchElement implements SpriteInterface {
 			anim.update( Game.ME.tmod );
 
 		return super.update(et);
+	}
+
+	public function changeVisible(v:Bool) {
+		animVisibleFlag = v;
 	}
 }

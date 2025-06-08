@@ -421,10 +421,10 @@ class AnimManager {
 
 		if( t!=null && t.anim!=spr.groupName ) {
 			if(t.anim == "_hide") {
-				spr.setVisible(false);
+				spr.changeVisible(false);
 			}
 			else if( t.anim == "_show") {
-				spr.setVisible(true);
+				spr.changeVisible(true);
 			}
 			else if( spr.lib.exists(t.anim) ) {
 				var a = new AnimInstance(spr, t.anim);
