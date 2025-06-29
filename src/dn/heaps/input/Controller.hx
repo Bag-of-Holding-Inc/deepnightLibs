@@ -896,10 +896,10 @@ class InputBinding<T:Int> {
 	@:keep
 	public function toString() {
 		var all = [];
-		if( isLStick && padNeg==null && signLimit==0 ) all.push( "Pad<LSTICK_" + (isX?"X":"Y") + (invert?"-":"+") + ">" );
-		if( isRStick && padNeg==null && signLimit==0 ) all.push( "Pad<RSTICK_" + (isX?"X":"Y") + (invert?"-":"+") + ">" );
-		if( isLStick && padNeg==null && signLimit!=0 ) all.push( "Pad<LSTICK_" + (isX?signLimit<0?"LEFT":"RIGHT":signLimit<0?"UP":"DOWN") + (invert?"-":"+") + ">" );
-		if( isRStick && padNeg==null && signLimit!=0 ) all.push( "Pad<RSTICK_" + (isX?signLimit<0?"LEFT":"RIGHT":signLimit<0?"UP":"DOWN") + (invert?"-":"+") + ">" );
+		if( isLStick && padNeg==null && signLimit==0 ) all.push( "LStick " + (isX?"X":"Y") + (invert?"-":"+") + "" );
+		if( isRStick && padNeg==null && signLimit==0 ) all.push( "RStick" + (isX?"X":"Y") + (invert?"-":"+") + "" );
+		if( isLStick && padNeg==null && signLimit!=0 ) all.push( "LStick" + (isX?signLimit<0?"Left":"Right":signLimit<0?"Up":"Down") + (invert?"-":"") + "" );
+		if( isRStick && padNeg==null && signLimit!=0 ) all.push( "RStick" + (isX?signLimit<0?"Left":"Right":signLimit<0?"Up":"Down") + (invert?"-":"") + "" );
 		if( padNeg!=null ) all.push( getPadButtonAsString(padNeg) );
 		if( padPos!=null ) all.push( getPadButtonAsString(padPos) );
 		if( padButton!=null ) all.push( getPadButtonAsString(padButton) );
@@ -909,7 +909,59 @@ class InputBinding<T:Int> {
 	}
 
 	inline function getPadButtonAsString(b:PadButton) {
-		return 'Pad<$b>';
+		switch(b) {
+			case PadButton.A:
+				return "A";
+			case PadButton.B:
+				return "B";
+			case PadButton.X:
+				return "X";
+			case PadButton.Y:
+				return "Y";
+			case PadButton.DPAD_DOWN:
+				return "DPad Down";
+			case PadButton.DPAD_UP:
+				return "DPad Up";
+			case PadButton.DPAD_LEFT:
+				return "DPad Left";
+			case PadButton.DPAD_RIGHT:
+				return "DPad Right";
+			case PadButton.LB:
+				return "Left Shoulder";
+			case PadButton.RB:
+				return "Right Shoulder";
+			case PadButton.LSTICK_PUSH:
+				return "LStick Press";
+			case PadButton.LT:
+				return "Left Trigger";
+			case PadButton.RT:
+				return "Right Trigger";
+			case PadButton.RSTICK_PUSH:
+				return "RStick Press";
+			case PadButton.SELECT:
+				return "Select";
+			case PadButton.START:
+				return "Start";
+			case PadButton.LSTICK_LEFT:
+				return "LStick Left";
+			case PadButton.LSTICK_RIGHT:
+				return "LStick Right";
+			case PadButton.LSTICK_DOWN:
+				return "LStick Down";
+			case PadButton.LSTICK_UP:
+				return "LStick Up";
+			case PadButton.RSTICK_UP:
+				return "RStick Up";
+			case PadButton.RSTICK_DOWN:
+				return "RStick Down";
+			case PadButton.RSTICK_LEFT:
+				return "RStick Left";
+			case PadButton.RSTICK_RIGHT:
+				return "RStick Right";
+			default:
+				return 'Pad<$b>';
+		}
+		
 	}
 
 
